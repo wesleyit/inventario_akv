@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# inventario_akv - arquivos locais
+Prompt.md
+referencia.sh
+__pycache__/
+*.csv
+*.json
