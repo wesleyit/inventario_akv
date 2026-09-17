@@ -5,6 +5,9 @@
 # Uso rápido (one-liner):
 #   curl -fsSL https://raw.githubusercontent.com/wesleyit/inventario_akv/main/run.sh | bash
 #
+# Com opções (repare no '-s --' antes das flags):
+#   curl -fsSL .../run.sh | bash -s -- --dias 90
+#
 # Ele baixa o script Python mais recente e o executa com o Python nativo,
 # redirecionando a entrada para o terminal para que os prompts interativos
 # (continuar/recomeçar) funcionem mesmo quando chamado via 'curl | bash'.
@@ -21,7 +24,7 @@ echo "Executando o inventário..."
 # Redireciona a entrada padrão para o terminal, garantindo que o input()
 # funcione mesmo quando este script chega via pipe (curl | bash).
 if [[ -e /dev/tty ]]; then
-  python3 "${ARQUIVO_LOCAL}" < /dev/tty
+  python3 "${ARQUIVO_LOCAL}" "$@" < /dev/tty
 else
-  python3 "${ARQUIVO_LOCAL}"
+  python3 "${ARQUIVO_LOCAL}" "$@"
 fi
